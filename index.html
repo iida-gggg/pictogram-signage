@@ -40,36 +40,39 @@
       will-change: opacity;
     }
 
-    /* 背景のアニメーション */
+    /* 変更点: 4枚ループ用にキーフレームを再計算 */
     @keyframes backgroundFade {
       0% { opacity: 0; }
-      /* 1枚あたり6秒のうちの割合で計算: 100% / 6枚 = 16.66% */
-      1.5% { opacity: 1; }  /* 約0.5秒でフェードイン */
-      15.16% { opacity: 1; }
-      16.66% { opacity: 0; }  /* 約0.5秒でフェードアウト */
+      /* 1枚あたり6秒のうちの割合で計算: 100% / 4枚 = 25% */
+      2% { opacity: 1; }  /* 約0.5秒でフェードイン */
+      23% { opacity: 1; }
+      25% { opacity: 0; }  /* 約0.5秒でフェードアウト */
       100% { opacity: 0; }
     }
 
     /* --- 背景画像の表示時間 --- */
     .slide {
-      /* 変更点: 1枚あたり6秒 × 6枚 = 36秒 でループ */
-      animation-duration: 36s;
+      /* 変更点: 1枚あたり6秒 × 4枚 = 24秒 でループ */
+      animation-duration: 24s;
     }
     
-    /* 7枚の画像をそれぞれ指定し、アニメーションが始まるタイミングをずらします */
+    /* 表示する画像とタイミングを指定 */
     .slide:nth-child(1) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram1.jpg'); animation-delay: 0s; }
     .slide:nth-child(2) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram2.jpg'); animation-delay: 6s; }
     
-    /* 変更点: 3枚目のスライドを非表示にする */
-    .slide:nth-child(3) { 
-      display: none; 
-    }
+    /* 変更点: 3枚目のスライドを非表示 */
+    .slide:nth-child(3) { display: none; }
 
-    /* 変更点: 4枚目以降の表示タイミングを前倒しする */
     .slide:nth-child(4) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram4.jpg'); animation-delay: 12s; }
-    .slide:nth-child(5) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram5.jpg'); animation-delay: 18s; }
-    .slide:nth-child(6) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram6.jpg'); animation-delay: 24s; }
-    .slide:nth-child(7) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram7.jpg'); animation-delay: 30s; }
+    
+    /* 変更点: 5枚目のスライドを非表示 */
+    .slide:nth-child(5) { display: none; }
+
+    .slide:nth-child(6) { background-image: url('https://iida-mdg.github.io/pictogram-signage/pictogram6.jpg'); animation-delay: 18s; }
+    
+    /* 変更点: 7枚目のスライドを非表示 */
+    .slide:nth-child(7) { display: none; }
+
 
     /* --- 中央メッセージ --- */
     .center-message {
@@ -87,12 +90,12 @@
       border-radius: 10px;
       opacity: 0;
       animation-name: textFade;
-      animation-duration: 6s;
+      animation-duration: 6s; /* 1枚あたりの表示時間(6秒)に合わせるため、ここは変更なし */
       animation-iteration-count: infinite;
       will-change: opacity;
     }
 
-    /* 文字のアニメーション */
+    /* 文字のアニメーション (変更なし) */
     @keyframes textFade {
       0% { opacity: 0; }
       10% { opacity: 0; }
